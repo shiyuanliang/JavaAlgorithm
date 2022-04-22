@@ -4,7 +4,7 @@ import java.util.*;
  * @author LiangShiyuan
  * @create 2022-04-21 16:30
  */
-public class Kruskal {
+public class KruskalMST {
     class Myset{
         public HashMap<Node, List<Node>> setMap;
 

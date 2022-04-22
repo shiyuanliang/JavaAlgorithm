@@ -1,4 +1,3 @@
-import  traverse.TwoTree;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -8,7 +7,11 @@ public class CBT {
     public static void main(String[] args) {
 
     }
-
+    class TwoTree{
+        int val;
+        TwoTree left;
+        TwoTree right;
+    }
     public   static  boolean isCBT(TwoTree head){
         if(head ==null){
             return  true;

@@ -20,14 +20,4 @@ public class classTwoTree {
     }
 
 
-    public  static  TwoTree getSuccessorNode(TwoTree node){
-        if(node==null){
-            return  node;
-        }
-        if(node.right!=null){//node有右树的情况
-            return  getLeftMost(node.right);
-        }else{//node没有右树的情况
-
-        }
-    }
 }

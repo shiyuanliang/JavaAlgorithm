@@ -5,6 +5,7 @@ import java.util.*;
  * @create 2022-04-21 16:30
  */
 public class KruskalMST {
+    //适用于无向图
     class Myset{
         public HashMap<Node, List<Node>> setMap;
 

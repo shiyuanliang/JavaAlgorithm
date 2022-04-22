@@ -7,6 +7,7 @@ import java.util.*;
  * @create 2022-04-22 16:45
  */
 public class PrimMST {
+    //适用于无向图
     public  static  class EdgeComparatot implements Comparator<Edge>{
         @Override
         public int compare(Edge o1, Edge o2) {

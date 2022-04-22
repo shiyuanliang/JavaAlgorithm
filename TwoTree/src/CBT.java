@@ -13,6 +13,7 @@ public class CBT {
         TwoTree right;
     }
     public   static  boolean isCBT(TwoTree head){
+        int i = 0;
         if(head ==null){
             return  true;
         }

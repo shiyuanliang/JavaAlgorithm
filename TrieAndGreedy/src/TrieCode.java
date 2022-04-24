@@ -56,6 +56,7 @@ public class TrieCode {
                 }
                 node = node.nexts[nodeIndex];
             }
+            node.end--;
         }
 
         //查询word加入的次数
@@ -91,7 +92,7 @@ public class TrieCode {
                 }
                 node = node.nexts[nodeIndex];
             }
-            return node.end;
+            return node.pass;
         }
     }
 }

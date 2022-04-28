@@ -1,3 +1,4 @@
+import javax.print.attribute.IntegerSyntax;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -49,4 +50,111 @@ public class DijkstraMST {
         }
         return  minNode;
     }
+
+
+
+    //第二种Dijkstra算法 新建一个小根堆的结构  这样就不用遍历选择最小的那个值
+
+    public  class NodeRecord {
+        public  Node  node;
+        public  int distance;
+
+        public  NodeRecord(Node node, int distance){
+            this.node = node;
+            this.distance = distance;
+        }
+    }
+
+    public class NodeHeap {
+        private  Node[] nodes;
+        private  HashMap<Node, Integer> heapIndexMap;
+        private  HashMap<Node, Integer> distanceMap;
+        private  int size;
+        public NodeHeap(int size){
+            nodes = new Node[size];
+            heapIndexMap = new HashMap<>();
+            distanceMap = new HashMap<>();
+            this.size = 0;
+        }
+
+        public   boolean isEmpty(){
+            return  size ==0;
+        }
+
+        public   void addOrUpdateOrIgnore(Node node, int distance){
+            if(inHeap(node)){//还在Node[] 大根堆中
+                distanceMap.put(node,Math.min(distanceMap.get(node),distance));
+                insertHeapify(node,heapIndexMap.get(node));
+            }
+            if(!isEntered(node)){
+                nodes[size] = node;
+                heapIndexMap.put(node, size);
+                distanceMap.put(node,distance);
+                insertHeapify(node,size++);
+            }
+        }
+
+        public NodeRecord pop(){
+            NodeRecord nodeRecord = new NodeRecord(nodes[0], distanceMap.get(nodes[0]));
+            swap(0,size-1);
+            heapIndexMap.put(nodes[size-1],-1);//删除弹出的节点
+            distanceMap.remove(nodes[size-1]);
+            nodes[size-1] = null;
+            heapify(0,--size);
+            return  nodeRecord;
+        }
+
+        private void insertHeapify(Node node, int index){
+            while(distanceMap.get(nodes[index])<distanceMap.get(nodes[(index-1)/2])){
+                swap(index,(index-1)/2);
+                index = (index-1)/2;
+            }
+        }
+
+        private  void heapify(int index,int size){
+            int left = index*2+1;
+            while(left<size){
+                int smallext= left+1 <size && distanceMap.get(nodes[left])<distanceMap.get(nodes[left+1]) ?left :left+1;
+                smallext = distanceMap.get(nodes[smallext])<distanceMap.get(nodes[index])? smallext:index;
+                if(smallext==index){
+                    break;
+                }
+                swap(smallext,index);
+                index = smallext;
+                left = index*2+1;
+            }
+        }
+
+        private  boolean isEntered(Node node){
+            return  heapIndexMap.containsKey(node);
+        }
+        private boolean inHeap(Node node){
+            return  isEntered(node) && heapIndexMap.get(node)!=-1;
+        }
+        private  void swap(int index1, int index2){
+            heapIndexMap.put(nodes[index1], index2);
+            heapIndexMap.put(nodes[index2],index1);
+            Node temp = nodes[index1];
+            nodes[index1] = nodes[index2];
+            nodes[index2] = temp;
+        }
+    }
+
+
+    public  HashMap<Node, Integer> dijkstra2(Node head, int size){
+        NodeHeap nodeHeap = new NodeHeap(size);
+        nodeHeap.addOrUpdateOrIgnore(head,0);
+        HashMap<Node, Integer> result = new HashMap<>();
+        while(!nodeHeap.isEmpty()){
+            NodeRecord record = nodeHeap.pop();
+            Node  cur = record.node;
+            int distance = record.distance;
+            for(Edge edge :cur.edges){
+                nodeHeap.addOrUpdateOrIgnore(cur, edge.weight+distance);
+            }
+            result.put(cur,distance);
+        }
+        return  result;
+    }
+
 }

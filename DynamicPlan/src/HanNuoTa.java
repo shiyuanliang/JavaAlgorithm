@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * @author LiangShiyuan
  * @create 2022-04-28 21:42
@@ -23,6 +25,5 @@ public class HanNuoTa {
         int n = 3;
         hanoi(3);
     }
-
 
 }

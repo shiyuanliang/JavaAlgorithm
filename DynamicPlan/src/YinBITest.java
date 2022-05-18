@@ -83,11 +83,11 @@ public class YinBITest {
     public  static int minCoins3(int[] arr, int aim){
         int N = arr.length;
         int[][] dp = new int[N+1][aim+1];
-        for(int i =0;i<N+1;i++){//将第一列全部为0   也就是说当rest=0时为0
-            dp[i][0] = 0;
-        }
-        for(int i=0;i<aim+1;i++){//将最后一行设定为-1  也就是说当index=index时为-1
+        for(int i=0;i<aim+1;i++){//将最后一行设定为-1  也就是说当index=index时为-1  一定这个要在前面 否则会报错
             dp[N][i] = -1;
+        }
+        for(int i =0;i<N+1;i++){//将第一列全部为0   也就是说当rest=0时为0  一定要这个在后面  否则会出现错误
+            dp[i][0] = 0;
         }
         for(int index=N-1;index>=0;index--){
             for(int rest =1;rest<aim+1;rest++){
@@ -109,12 +109,6 @@ public class YinBITest {
                 }
             }
         }
-        for(int i =0;i<N+1;i++){
-            for(int j=0;j<aim+1;j++){
-                System.out.println(dp[i][j]);
-            }
-        }
-
         return  dp[0][aim];
     }
 

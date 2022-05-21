@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/JavaAlgorithm.iml" filepath="$PROJECT_DIR$/.idea/JavaAlgorithm.iml" />
       <module fileurl="file://$PROJECT_DIR$/List/List.iml" filepath="$PROJECT_DIR$/List/List.iml" />
       <module fileurl="file://$PROJECT_DIR$/Map/Map.iml" filepath="$PROJECT_DIR$/Map/Map.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ReflectLearning/ReflectLearning.iml" filepath="$PROJECT_DIR$/ReflectLearning/ReflectLearning.iml" />
       <module fileurl="file://$PROJECT_DIR$/Sort/Sort.iml" filepath="$PROJECT_DIR$/Sort/Sort.iml" />
       <module fileurl="file://$PROJECT_DIR$/SpecialAlgorithm/SpecialAlgorithm.iml" filepath="$PROJECT_DIR$/SpecialAlgorithm/SpecialAlgorithm.iml" />
       <module fileurl="file://$PROJECT_DIR$/TrieAndGreedy/TrieAndGreedy.iml" filepath="$PROJECT_DIR$/TrieAndGreedy/TrieAndGreedy.iml" />

@@ -1,5 +1,7 @@
 package ClassLoadLearning;
 
+import java.util.HashMap;
+
 /**
  * @author shkstart
  * @create 2020 下午 8:34
@@ -16,5 +18,7 @@ public class ClinitTest {
         a = 10;
         int d = 20;
     }
+
+
 
 }
